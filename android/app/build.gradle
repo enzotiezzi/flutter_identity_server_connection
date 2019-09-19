@@ -45,7 +45,7 @@ android {
         versionName flutterVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         manifestPlaceholders = [
-                'appAuthRedirectScheme': 'zellar.identityserver'
+                'appAuthRedirectScheme': 'io.identityserver.demo'
         ]
     }
 

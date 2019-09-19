@@ -45,25 +45,30 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String _clientId = 'App_Flutter';
-  String _redirectUrl = 'zellar.identityserver:/oauthredirect';
+  String _clientId = 'native.code';
+  String _redirectUrl = 'io.identityserver.demo:/oauthredirect';
+  String _issuer = 'https://demo.identityserver.io';
+  String _discoveryUrl =
+      'https://demo.identityserver.io/.well-known/openid-configuration';
   List<String> _scopes = [
     'openid',
-    'profile'
+    'profile',
+    'email',
+    'offline_access',
+    'api'
   ];
 
   AuthorizationServiceConfiguration _serviceConfiguration =
       AuthorizationServiceConfiguration(
-          'https://identity-server-dev.zellar.com.br/connect/authorize',
-          'https://identity-server-dev.zellar.com.br/connect/token');
+          'https://demo.identityserver.io/connect/authorize',
+          'https://demo.identityserver.io/connect/token');
 
   FlutterAppAuth _appAuth = FlutterAppAuth();
 
   void _incrementCounter() async {
     var result = await _appAuth.authorizeAndExchangeCode(
       AuthorizationTokenRequest(_clientId, _redirectUrl,
-          serviceConfiguration: _serviceConfiguration,
-          scopes: _scopes),
+          serviceConfiguration: _serviceConfiguration, scopes: _scopes),
     );
     print("");
   }
